@@ -34,10 +34,11 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SearchTargetPosition();
+        if (!PauseControl.isPaused)
+            SearchTargetPosition();
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         Movement();
     }

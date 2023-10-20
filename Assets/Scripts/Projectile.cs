@@ -20,7 +20,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveForward();
+        if (!PauseControl.isPaused)
+            MoveForward();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

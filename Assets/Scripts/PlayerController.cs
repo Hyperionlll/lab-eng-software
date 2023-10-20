@@ -28,8 +28,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        FireProjectile();
+        if (!PauseControl.isPaused)
+        {
+            Movement();
+            FireProjectile();
+        }
     }
 
     // Verifica se o player esta no chao ou no ar
