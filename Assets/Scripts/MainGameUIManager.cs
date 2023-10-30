@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-public class PauseControl : MonoBehaviour
+public class MainGameUIManager : MonoBehaviour
 {
     public static bool isPaused = false;
     [SerializeField] private GameObject menuCanvas, pauseMenu, optionsMenu, deathScreen;

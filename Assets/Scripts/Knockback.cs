@@ -17,6 +17,7 @@ public class Knockback : MonoBehaviour
     {
         StopAllCoroutines();
         OnBegin?.Invoke();
+        rb2d.velocity = Vector3.zero;
         Vector2 direction = (transform.position - sender.transform.position).normalized;
         rb2d.AddForce(direction * strength, ForceMode2D.Impulse);
         if (gameObject.CompareTag("Player"))

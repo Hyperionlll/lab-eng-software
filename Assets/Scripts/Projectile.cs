@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseControl.isPaused)
+        if (!MainGameUIManager.isPaused)
             MoveForward();
     }
 

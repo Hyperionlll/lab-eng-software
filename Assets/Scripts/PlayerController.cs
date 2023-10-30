@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isJumping = false;
-    private bool fireCooldown = false;
+    private bool isJumping = false, fireCooldown = false;
     [SerializeField] private float fireCooldownTimer = 0.5f;
     private float jumpForce = 35f;
     private float moveSpeed = 15f;
@@ -19,16 +18,9 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (!PauseControl.isPaused)
+        if (!MainGameUIManager.isPaused)
         {
             Movement();
             FireProjectile();
@@ -40,9 +32,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
-        {
             isJumping = false;
-        }
     }
 
     // Input de movimento
