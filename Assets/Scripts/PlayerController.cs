@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping = false, fireCooldown = false;
     [SerializeField] private float fireCooldownTimer = 0.5f;
     private float jumpForce = 35f;
-    private float moveSpeed = 15f;
+    private float moveSpeed = 10f;
     private Rigidbody2D playerRb;
 
     public GameObject projectile;
