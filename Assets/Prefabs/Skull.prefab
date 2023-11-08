@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1464359664035350959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31389898, y: 3.776762, z: -0.2746242}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -439,13 +439,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7202707383077122520}
-  - component: {fileID: 712088592465581752}
+  - component: {fileID: 3857117991140973078}
   - component: {fileID: 8802332173803104081}
   - component: {fileID: 8729217548128683040}
   - component: {fileID: 4529544445664010513}
   - component: {fileID: 2679105366519643900}
+  - component: {fileID: 528421458633640748}
   - component: {fileID: 3687673010468971759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -462,13 +463,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.266373, y: -5.576762, z: 0.2746242}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4109606818483292663}
   m_Father: {fileID: 6863575292140225226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &712088592465581752
+--- !u!114 &3857117991140973078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,11 +478,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7101356106795098381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191479f4624b17c40b712359d80ce738, type: 3}
+  m_Script: {fileID: 11500000, guid: de2dce5616e2ed34da146ca96cbd3cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   aggroRange: 10
+  patrolRange: 7.5
+  moveSpeed: 5
 --- !u!114 &8802332173803104081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +534,7 @@ MonoBehaviour:
   OnBegin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 712088592465581752}
+      - m_Target: {fileID: 3857117991140973078}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -546,7 +549,7 @@ MonoBehaviour:
   OnDone:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 712088592465581752}
+      - m_Target: {fileID: 3857117991140973078}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -625,7 +628,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -642,7 +645,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023575261, y: -0.012408026}
+  m_Offset: {x: 0.017021433, y: -0.012408018}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -653,7 +656,52 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27284947, y: 0.29766554}
+  m_Size: {x: 0.25974184, y: 0.29766554}
+  m_EdgeRadius: 0
+--- !u!61 &528421458633640748
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101356106795098381}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.017021433, y: -0.012408018}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25974184, y: 0.29766554}
   m_EdgeRadius: 0
 --- !u!50 &3687673010468971759
 Rigidbody2D:

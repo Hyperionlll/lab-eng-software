@@ -44,6 +44,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4f37ea32002ecc444bb58968fde24def, type: 3}
+    - target: {fileID: 247435025059223033, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463900154727233127, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3943646008386427505, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
@@ -101,7 +109,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5831184827916766858, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
