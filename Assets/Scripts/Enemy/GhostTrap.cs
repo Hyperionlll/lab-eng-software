@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class GhostTrap : MonoBehaviour
 {
-    public GameObject[] ghosts;
-    private bool triggered = false;
+    private bool triggered = false; // checks if the trap was triggered - prevents errors
+
+    public GameObject[] ghosts; // ghosts objects already in the scene to activate when triggered
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && !triggered)
         {
+            triggered = true;
             foreach (GameObject ghost in ghosts)
             {
                 ghost.GetComponent<Ghost>().TrapTrigger();
             }
-            triggered = false;
         }
     }
 }

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isJumping = false, fireCooldown = false;
     [SerializeField] private float fireCooldownTimer = 0.5f;
-    private float jumpForce = 35f;
-    private float moveSpeed = 10f;
+    [SerializeField] private float jumpForce = 35f;
+    [SerializeField] private float moveSpeed = 10f;
+
+    [SerializeField] private bool isGrounded = true, fireCooldown = false;
     private Rigidbody2D playerRb;
 
     public GameObject projectile;
@@ -32,7 +33,19 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
-            isJumping = false;
+            isGrounded = true;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
+            isGrounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
+            isGrounded = false;
     }
 
     // Input de movimento
@@ -53,10 +66,10 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(horizontalInput * moveSpeed, playerRb.velocity.y);
 
         // Input de pular
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             playerRb.AddForce(new Vector2(playerRb.velocity.x, jumpForce), ForceMode2D.Impulse);
-            isJumping = true;
+            isGrounded = false;
         }
     }
 

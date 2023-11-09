@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Goblin : Enemy
 {
-    // Chases player if player is in range
-    // Patrols if player is out range
+    // Chases player player when triggered
     private void FixedUpdate()
     {
-        if (playerPos && playerInRange)
+        if (playerPos && isTrapTriggered)
             ChasePlayer();
-        else
-            Patrol();
     }
 }

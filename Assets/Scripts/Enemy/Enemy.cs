@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
@@ -7,18 +8,20 @@ using UnityEngine.UIElements;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float aggroRange = 10f, patrolRange = 7.5f;
+    [SerializeField] private bool patrolBackwards = false;
     [SerializeField] protected int damage = 1;
     [SerializeField] protected float moveSpeed = 5f;
 
     private bool isAtBoundary = false;
-    private bool patrolBackwards = false;
-    private SpriteRenderer sprite;
-    private Vector2 distance;
     private Vector2 initialPos;
 
+    [SerializeField] protected bool isGrounded = true;
+    protected bool isTrapTriggered = false;
     protected bool playerInRange = false;
     protected Rigidbody2D rb2d;
+    protected SpriteRenderer sprite;
     protected Transform playerPos;
+    protected Vector2 distance;
     protected Vector2 moveDirection;
 
     private void Awake()
@@ -58,26 +61,25 @@ public class Enemy : MonoBehaviour
         {
             rb2d.velocity = new Vector2(-1, 0) * moveSpeed;
         }
-        else if (transform.position.x < initialPos.x)
+        else if (transform.position.x < (initialPos.x + patrolRange) && patrolBackwards)
         {
             rb2d.velocity = new Vector2(1, 0) * moveSpeed;
-            patrolBackwards = true;
         }
         else
         {
-            patrolBackwards = false;
-            initialPos = transform.position;
+            patrolBackwards = !patrolBackwards;
         }
         TurnDirection();
     }
 
     protected virtual void ChasePlayer()
     {
-        rb2d.velocity = new Vector2(moveDirection.x, 0) * moveSpeed;
+        if (isGrounded)
+            rb2d.velocity = new Vector2(moveDirection.x, 0) * moveSpeed;
         TurnDirection();
     }
 
-    protected void TurnDirection()
+    protected virtual void TurnDirection()
     {
         if (rb2d.velocity.x < 0f)
         {
@@ -105,12 +107,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyBoundary"))
         {
             isAtBoundary = true;
-            patrolBackwards = true;
+            patrolBackwards = !patrolBackwards;
             StartCoroutine(ResetBoundary());
         }
     }
@@ -119,5 +121,27 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         isAtBoundary = false;
+    }
+
+    public void TrapTrigger()
+    {
+        isTrapTriggered = true;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
 }
