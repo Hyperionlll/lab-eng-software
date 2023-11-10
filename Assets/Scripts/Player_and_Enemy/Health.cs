@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    private bool isDead = false;
-
+    protected bool isDead = false;
     public int currentHealth, maxHealth;
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
     public Slider healthBar;
 
-    public void Awake()
+    private void Awake()
     {
         isDead = false;
         healthBar.maxValue = maxHealth;
@@ -34,7 +34,8 @@ public class Health : MonoBehaviour
         {
             OnDeathWithReference?.Invoke(sender);
             isDead = true;
-            Destroy(gameObject);
+            GameObject parentObject = gameObject.transform.parent.gameObject;
+            Destroy(parentObject);
         }
     }
 

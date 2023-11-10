@@ -56,15 +56,26 @@ public class MainMenu : MonoBehaviour
         if (isMageSelected)
         {
             Debug.Log("Mage");
+            GameManager.chosenClass = "Mage";
+            SceneManager.LoadScene(1);
         }
         else if (isArcherSelected)
         {
             Debug.Log("Archer");
+            GameManager.chosenClass = "Archer";
+            SceneManager.LoadScene(2);
         }
         else if (isKnightSelected)
         {
             Debug.Log("Knight");
+            GameManager.chosenClass = "Knight";
+            SceneManager.LoadScene(3);
         }
+
+        //if (GameManager.chosenClass != null)
+        //    SceneManager.LoadScene(1);
+        //else
+        //    Debug.Log("Error: no class chosen");
     }
 
     public void SelectMage()
