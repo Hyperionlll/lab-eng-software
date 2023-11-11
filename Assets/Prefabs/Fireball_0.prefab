@@ -50,7 +50,7 @@ MonoBehaviour:
   speed: 10
   initialPos: {x: 1.2, y: 0.4}
   maxRange: 10
-  damage: 1
+  damage: 3
 --- !u!212 &596833831250249815
 SpriteRenderer:
   m_ObjectHideFlags: 0

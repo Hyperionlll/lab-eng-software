@@ -394,7 +394,7 @@ MonoBehaviour:
   patrolRange: 7.5
   patrolBackwards: 0
   damage: 1
-  moveSpeed: 5
+  moveSpeed: 6.5
   isGrounded: 1
 --- !u!50 &1274407805138429812
 Rigidbody2D:
@@ -525,8 +525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2922088417a09b64b8096bda1f7209e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 2
+  maxHealth: 2
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

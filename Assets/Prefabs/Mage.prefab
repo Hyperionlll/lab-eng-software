@@ -49,12 +49,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1204870778482298971, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: jumpForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204870778482298971, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: moveSpeed
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204870778482298971, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 7554571551613317179, guid: 28e0fc7f6038a2d419526242263951ea, type: 3}
     - target: {fileID: 2463900154727233127, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
       propertyPath: healthBar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463900154727233127, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2463900154727233127, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
+      propertyPath: currentHealth
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2463900154727233127, guid: 78111aab11b1dd243a7c328f2611f53f, type: 3}
       propertyPath: OnDeathWithReference.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

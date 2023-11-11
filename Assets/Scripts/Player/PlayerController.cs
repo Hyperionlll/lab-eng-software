@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool isGrounded = true, fireCooldown = false;
     private Rigidbody2D playerRb;
+    private PlayerResources playerResources;
 
     public GameObject projectile;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerResources = gameObject.GetComponent<PlayerResources>();
     }
 
     void Update()
@@ -36,17 +38,35 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
+    //        isGrounded = true;
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
+    //        isGrounded = false;
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
             isGrounded = true;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
-            isGrounded = false;
+            isGrounded = true;
     }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground")) // Se estiver tocando no chao (objeto com a tag Ground)
+    //        isGrounded = false;
+    //}
 
     // Input de movimento
     private void Movement()
@@ -76,10 +96,11 @@ public class PlayerController : MonoBehaviour
     // Input de atirar
     private void FireProjectile()
     {
-        if (Input.GetButtonDown("Fire1") && !fireCooldown)
+        if (Input.GetButtonDown("Fire1") && !fireCooldown && playerResources.currentResource>0)
         {
             Instantiate(projectile, transform.position, transform.rotation);
             fireCooldown = true;
+            playerResources.SpendResource();
             StartCoroutine(FireCooldown());
         }
     }

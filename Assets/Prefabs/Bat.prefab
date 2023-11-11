@@ -535,8 +535,9 @@ MonoBehaviour:
   aggroRange: 0
   patrolRange: 5
   patrolBackwards: 0
-  damage: 1
-  moveSpeed: 5
+  damage: 3
+  moveSpeed: 7.5
+  isGrounded: 1
 --- !u!114 &8754921047133126395
 MonoBehaviour:
   m_ObjectHideFlags: 0
