@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(new Vector2(playerRb.velocity.x, jumpForce), ForceMode2D.Impulse);
             isGrounded = false;
+            AudioManager.instance.PlayJumpSound();
         }
     }
 
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !fireCooldown && playerResources.currentResource>0)
         {
+            AudioManager.instance.PlayPlayerAttackSound();
             Instantiate(projectile, transform.position, transform.rotation);
             fireCooldown = true;
             playerResources.SpendResource();

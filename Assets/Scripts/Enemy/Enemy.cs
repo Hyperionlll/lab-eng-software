@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
         {
             Health health = collision.gameObject.GetComponent<Health>();
             health.GetHit(damage, gameObject);
+            AudioManager.instance.PlayHitSound();
         }
     }
 

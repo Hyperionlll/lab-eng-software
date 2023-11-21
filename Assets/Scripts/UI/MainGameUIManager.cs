@@ -10,7 +10,7 @@ using UnityEditor;
 public class MainGameUIManager : MonoBehaviour
 {
     public static bool isPaused = false;
-    [SerializeField] private GameObject menuCanvas, pauseMenu, optionsMenu, deathScreen;
+    [SerializeField] private GameObject menuCanvas, pauseMenu, optionsMenu, deathScreen, gameWonScreen;
 
     private void Update()
     {
@@ -23,11 +23,14 @@ public class MainGameUIManager : MonoBehaviour
                 Time.timeScale = 0;
                 pauseMenu.SetActive(true);
                 optionsMenu.SetActive(false);
+                AudioManager.instance.PlayPauseSound();
             }
             else // isPaused == false
             {
                 Time.timeScale = 1;
                 pauseMenu.SetActive(false);
+                optionsMenu.SetActive(false);
+                AudioManager.instance.PlayUnpauseSound();
             }
         }
     }
@@ -70,5 +73,11 @@ public class MainGameUIManager : MonoBehaviour
     public void DeathScreen()
     {
         deathScreen.SetActive(true);
+    }
+
+    public void ShowGameWonScreen()
+    {
+        Time.timeScale = 0;
+        gameWonScreen.SetActive(true);
     }
 }

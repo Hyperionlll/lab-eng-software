@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            AudioManager.instance.PlayHitSound();
             Health health = collision.gameObject.GetComponent<Health>();
             health.GetHit(damage, gameObject);
             Destroy(gameObject);
