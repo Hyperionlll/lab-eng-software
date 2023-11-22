@@ -177,7 +177,7 @@ MonoBehaviour:
   patrolRange: 7.5
   patrolBackwards: 0
   damage: 1
-  moveSpeed: 3.5
+  moveSpeed: 3.85
   isGrounded: 1
 --- !u!114 &4012922031149522340
 MonoBehaviour:

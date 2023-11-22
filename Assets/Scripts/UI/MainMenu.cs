@@ -55,21 +55,21 @@ public class MainMenu : MonoBehaviour
     {
         if (isMageSelected)
         {
-            Debug.Log("Mage");
-            GameManager.chosenClass = "Mage";
+            //Debug.Log("Mage");
+            GameManager.Instance.SaveChosenClass("Mage");
             SceneManager.LoadScene(1);
         }
         else if (isArcherSelected)
         {
-            Debug.Log("Archer");
-            GameManager.chosenClass = "Archer";
-            SceneManager.LoadScene(2);
+            //Debug.Log("Archer");
+            GameManager.Instance.SaveChosenClass("Archer");
+            SceneManager.LoadScene(1);
         }
         else if (isKnightSelected)
         {
-            Debug.Log("Knight");
-            GameManager.chosenClass = "Knight";
-            SceneManager.LoadScene(3);
+            //Debug.Log("Knight");
+            GameManager.Instance.SaveChosenClass("Knight");
+            SceneManager.LoadScene(1);
         }
 
         //if (GameManager.chosenClass != null)

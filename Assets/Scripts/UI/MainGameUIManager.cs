@@ -12,6 +12,11 @@ public class MainGameUIManager : MonoBehaviour
     public static bool isPaused = false;
     [SerializeField] private GameObject menuCanvas, pauseMenu, optionsMenu, deathScreen, gameWonScreen;
 
+    private void Start()
+    {
+        optionsMenu.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
