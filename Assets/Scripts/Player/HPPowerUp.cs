@@ -11,10 +11,10 @@ public class HPPowerUp : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioManager.instance.PlayHealSound();
             Health healthScript = collision.gameObject.GetComponent<Health>();
             if (healthScript.currentHealth < healthScript.maxHealth)
             {
+                AudioManager.instance.PlayHealSound();
                 healthScript.Heal(healStrength);
                 Destroy(gameObject);
             }

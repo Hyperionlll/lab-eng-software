@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        playerPos = GameObject.Find("Player").transform;
+        playerPos = GameObject.Find("PlayerBody").transform;
     }
 
     protected virtual void Update()
