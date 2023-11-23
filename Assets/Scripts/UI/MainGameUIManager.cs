@@ -82,7 +82,7 @@ public class MainGameUIManager : MonoBehaviour
 
     public void ShowGameWonScreen()
     {
-        Time.timeScale = 0;
+        isPaused = true;
         gameWonScreen.SetActive(true);
     }
 }

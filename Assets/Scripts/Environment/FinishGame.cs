@@ -10,6 +10,7 @@ public class FinishGame : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !isTriggered)
         {
+            Time.timeScale = 0;
             AudioManager.instance.PlayFinishGameSound();
             MainGameUIManager mainGameUIManager = GameObject.Find("MainGameUIManager").GetComponent<MainGameUIManager>();
             mainGameUIManager.ShowGameWonScreen();
